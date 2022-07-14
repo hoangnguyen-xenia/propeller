@@ -6,24 +6,16 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-import ItemCard from './item';
+import ItemCard, { PokemonDetailProps } from './item';
 import axios from 'axios';
 import { Box } from '@mui/system';
 
 type Pokemon = { name: string; url: string };
-type PokemonDetail = {
-  id: string;
-  abilities: [];
-  sprites: any;
-  weight: number;
-  height: number;
-  name: string;
-};
 
 export default function PokemonContainer() {
   const [isLoading, setIsLoading] = useState(true);
   const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/');
-  const [listPokemon, setListPokemon] = useState<PokemonDetail[]>([]);
+  const [listPokemon, setListPokemon] = useState<PokemonDetailProps[]>([]);
   const [pageAction, setPageAction] = useState({
     next: '',
     prev: '',
@@ -45,7 +37,7 @@ export default function PokemonContainer() {
       const poke = data.results?.map(async (p: Pokemon) =>
         axios.get(p.url).then((r) => r.data)
       );
-      const results: PokemonDetail[] = await Promise.all(poke);
+      const results: PokemonDetailProps[] = await Promise.all(poke);
       setListPokemon(results);
     } catch (error) {
       throw error;
