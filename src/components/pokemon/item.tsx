@@ -40,6 +40,7 @@ const ChipWrapper = styled(Chip)<{ colorType: string }>`
 const WhiteCardContent = styled(CardContent)`
   background-color: #ffffff;
   border-radius: 8px;
+  margin-top: 8px;
 `;
 
 export type PokemonDetailProps = {

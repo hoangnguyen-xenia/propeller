@@ -61,7 +61,7 @@ export default function PokemonContainer() {
           alignItems="stretch"
           justifyContent={'center'}>
           {listPokemon.map((pokemon) => (
-            <Grid key={pokemon.id} item xs={12} md={4} xl={3}>
+            <Grid key={pokemon.id} item xs={12} md={4}>
               <ItemCard pokemon={pokemon} isLoading={isLoading} />
             </Grid>
           ))}
